@@ -175,7 +175,7 @@ input:hover {
   background-color: hsl(278, 94%, 30%);
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 1023px) {
   main {
     flex-direction: column;
   }
@@ -202,7 +202,7 @@ input:hover {
     padding: 16px;
     position: absolute;
     top: 42%;
-    left: 16px;
+    left: 30%;
   }
 
   .card-front,
@@ -224,5 +224,15 @@ input:hover {
 
   .inputs-section {
     padding: 32px 16px;
+    height: 60vh;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .card-front {
+    left: 10%;
+  }
+  .inputs-section {
+    height: 100%;
   }
 }
