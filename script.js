@@ -27,13 +27,44 @@ const handleButton = event => {
   }
 };
 
-for (let input of inputs) {
-  for (let infos of cardInfos) {
-    if (input.id === infos.classList.value) {
-      input.addEventListener('input', () => {
-        infos.innerHTML = `${input.value}`;
-        input.value = `${input.value}`;
-      });
+const formatCardNumber = value => {
+  let result = '';
+  for (let i = 0; i < value.length; i++) {
+    result += value[i];
+    if ((i + 1) % 4 === 0 && i !== value.length - 1) {
+      result += ' ';
     }
   }
-}
+  return result;
+};
+
+const handleCardInfoUpdate = () => {
+  for (let input of inputs) {
+    for (let infos of cardInfos) {
+      if (input.id === infos.classList.value) {
+        input.addEventListener('input', () => {
+          infos.innerHTML = `${
+            input.id === 'card-number'
+              ? formatCardNumber(input.value)
+              : input.value
+          }`;
+          input.value = `${input.value}`;
+        });
+      }
+    }
+  }
+};
+
+const handleKeyDown = event => {
+  const { key } = event;
+
+  if (event.target.id !== 'card-name') {
+    if (!/^\d$/.test(key) && key !== 'Backspace') {
+      event.preventDefault();
+    } else {
+      handleCardInfoUpdate();
+    }
+  } else {
+    handleCardInfoUpdate();
+  }
+};
