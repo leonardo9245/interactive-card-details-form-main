@@ -12,6 +12,7 @@
   --secondary-color: hsl(270, 3%, 87%);
   --btn-color: hsl(278, 68%, 11%);
   --gray-color: hsl(279, 6%, 55%);
+  --error-color: hsl(0, 100%, 66%);
 }
 
 main {
@@ -130,11 +131,17 @@ label {
 input {
   padding: 12px 16px;
   border-radius: var(--border);
-  margin-bottom: 30px;
   border: none;
   border: 1px solid var(--secondary-color);
 
   transition: 0.4s;
+}
+.input-container {
+  margin-bottom: 30px;
+}
+
+.error-input {
+  border: 1px solid var(--error-color);
 }
 
 input:hover {
@@ -154,6 +161,16 @@ input:hover {
   flex: 1;
 }
 
+.error-message {
+  display: none;
+  color: var(--error-color);
+  font-size: 12px;
+}
+
+.display {
+  display: block;
+}
+
 .btn {
   width: 100%;
   border: none;
@@ -163,6 +180,7 @@ input:hover {
   color: #fff;
   cursor: pointer;
   transition: linear 0.3s;
+  margin: 30px 0;
 }
 
 .btn:hover {
