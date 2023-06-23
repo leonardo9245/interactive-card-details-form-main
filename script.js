@@ -10,12 +10,14 @@ const checkInputs = (id, value) => {
   errorElement.forEach(e => {
     if (value === '') {
       element.classList.add('error-input');
-      if (e.classList.contains(id)) {
+      if (e.classList.contains(id) && value === '') {
         e.classList.add('display');
       }
     } else {
       element.classList.remove('error-input');
-      e.classList.remove('display');
+      if (e.classList.contains(id)) {
+        e.classList.remove('display');
+      }
     }
   });
 };
