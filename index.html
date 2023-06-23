@@ -60,9 +60,7 @@
                 required
                 onkeydown="handleKeyDown(event)"
               />
-              <span class="error-message card-number"
-                >Wrong format, numbers only</span
-              >
+              <span class="error-message card-number">Can&#96;t be blank</span>
             </div>
           </div>
           <div class="date-inputs-container">
@@ -88,7 +86,9 @@
                   onkeydown="handleKeyDown(event)"
                 />
               </div>
-              <span class="error-message card-month"> Can&#96;t be blank</span>
+              <span class="error-message card-month card-year">
+                Can&#96;t be blank</span
+              >
             </div>
             <div>
               <label for="card-cvc">CVC </label>
