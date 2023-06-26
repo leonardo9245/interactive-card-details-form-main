@@ -5,11 +5,22 @@ const cardInfos = document.querySelectorAll(
 const errorElement = document.querySelectorAll('.error-message');
 const date = new Date();
 
+const handleConfirmation = value => {
+  const formContainer = document.querySelector('form');
+  const completeState = document.querySelector('.complete-state');
+
+  if (value) {
+    formContainer.classList.toggle('display');
+    completeState.classList.toggle('display');
+  }
+};
+
 const checkInputs = (id, value) => {
   const inputElement = document.getElementById(id);
   const year = date.getFullYear().toString().slice(2);
   const yearInt = parseInt(year);
   const valueInt = parseInt(value);
+  let isValid = false;
 
   errorElement.forEach(e => {
     if (value === '') {
@@ -25,17 +36,23 @@ const checkInputs = (id, value) => {
           if (valueInt < yearInt || valueInt > yearInt + 10) {
             e.innerHTML = 'please insert a valid year';
             e.classList.add('display');
+            isValid = false;
+            return;
           }
         } else if (id === 'card-month') {
           if (valueInt < 1 || valueInt > 12) {
             e.innerHTML = 'please insert a valid month';
             e.classList.add('display');
-            console.log(e);
+            isValid = false;
+            return;
           }
         }
+        isValid = true;
       }
     }
   });
+
+  handleConfirmation(isValid);
 };
 
 const handleButton = event => {

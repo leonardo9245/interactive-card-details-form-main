@@ -35,7 +35,7 @@
         <div class="card-back"><p class="card-cvc">000</p></div>
       </section>
       <section class="inputs-section">
-        <form>
+        <form class="display">
           <div>
             <div class="input-container">
               <label for="card-name"> Cardholder Name</label>
@@ -109,6 +109,15 @@
           </div>
           <button class="btn" onclick="handleButton(event)">Confirm</button>
         </form>
+
+        <div class="complete-state">
+          <img src="./images/icon-complete.svg" alt="icon confirmation" />
+          <div>
+            <h2>Thank you</h2>
+            <p>We've added you card detail</p>
+          </div>
+          <button class="btn">Continue</button>
+        </div>
       </section>
 
       <!-- Completed state start -->
