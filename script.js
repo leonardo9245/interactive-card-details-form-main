@@ -102,6 +102,10 @@ const handleCardInfoUpdate = () => {
   }
 };
 
+const reload = () => {
+  location.reload();
+};
+
 const handleKeyDown = event => {
   const { key } = event;
 
