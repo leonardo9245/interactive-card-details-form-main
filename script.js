@@ -1,6 +1,6 @@
 const inputs = document.querySelectorAll('input');
 const cardInfos = document.querySelectorAll(
-  '.card-name, .card-number, .card-month, .card-year, .card-cvc'
+  '.card_name, .card_number, .card_month, .card_year, .card_cvc'
 );
 const errorElement = document.querySelectorAll('.error-message');
 const date = new Date();
@@ -15,51 +15,63 @@ const handleConfirmation = value => {
   }
 };
 
-const checkInputs = (id, value) => {
-  const inputElement = document.getElementById(id);
+const checkInputs = data => {
   const year = date.getFullYear().toString().slice(2);
   const yearInt = parseInt(year);
-  const valueInt = parseInt(value);
-  let isValid = false;
+  let isValid = true;
 
-  errorElement.forEach(e => {
-    if (value === '') {
-      inputElement.classList.add('error-input');
-      if (e.classList.contains(id) && value === '') {
-        e.classList.add('display');
-      }
-    } else {
-      inputElement.classList.remove('error-input');
-      if (e.classList.contains(id)) {
-        e.classList.remove('display');
-        if (id === 'card-year') {
-          if (valueInt < yearInt || valueInt > yearInt + 10) {
-            e.innerHTML = 'please insert a valid year';
-            e.classList.add('display');
-            isValid = false;
-            return;
-          }
-        } else if (id === 'card-month') {
-          if (valueInt < 1 || valueInt > 12) {
-            e.innerHTML = 'please insert a valid month';
-            e.classList.add('display');
-            isValid = false;
-            return;
-          }
+  errorElement.forEach((e, index) => {
+    if (e.classList.contains(data[index].name) && data[index].value === '') {
+      e.classList.add('display');
+      inputs[index].classList.add('error-input');
+    } else if (
+      e.classList.contains(data[index].name) &&
+      data[index].value !== ''
+    ) {
+      e.classList.remove('display');
+      inputs[index].classList.remove('error-input');
+
+      if (data[index].name === 'card_year') {
+        if (
+          parseInt(data[index].value) < yearInt ||
+          parseInt(data[index].value) > yearInt + 10
+        ) {
+          e.innerHTML = 'please insert a valid year';
+          e.classList.add('display');
+          inputs[index].classList.add('error-input');
+          isValid = false;
+          return;
         }
-        isValid = true;
+      } else if (data[index].name === 'card_month') {
+        if (
+          parseInt(data[index].value) < 1 ||
+          parseInt(data[index].value) > 12
+        ) {
+          e.innerHTML = 'please insert a valid month';
+          e.classList.add('display');
+          inputs[index].classList.add('error-input');
+          isValid = false;
+          return;
+        }
       }
     }
-  });
 
+    if (data[index].value === '') {
+      isValid = false;
+    }
+  });
   handleConfirmation(isValid);
 };
 
 const handleButton = event => {
   event.preventDefault();
+
+  let data = [];
   for (let input of inputs) {
-    checkInputs(input.id, input.value);
+    data.push({ name: input.id, value: input.value });
   }
+
+  checkInputs(data);
 };
 
 const formatCardNumber = value => {
@@ -79,7 +91,7 @@ const handleCardInfoUpdate = () => {
       if (input.id === infos.classList.value) {
         input.addEventListener('input', () => {
           infos.innerHTML = `${
-            input.id === 'card-number'
+            input.id === 'card_number'
               ? formatCardNumber(input.value)
               : input.value
           }`;
@@ -93,7 +105,7 @@ const handleCardInfoUpdate = () => {
 const handleKeyDown = event => {
   const { key } = event;
 
-  if (event.target.id !== 'card-name') {
+  if (event.target.id !== 'card_name') {
     if (!/^\d$/.test(key) && key !== 'Backspace') {
       event.preventDefault();
     } else {

@@ -22,17 +22,17 @@
       <section class="card-section">
         <div class="card-front">
           <div></div>
-          <h2 class="card-number">0000 0000 0000 0000</h2>
+          <h2 class="card_number">0000 0000 0000 0000</h2>
           <div class="card-info">
-            <p class="card-name">Jane Appleseed</p>
+            <p class="card_name">Jane Appleseed</p>
             <p>
-              <span class="card-month">00</span>/<span class="card-year"
+              <span class="card_month">00</span>/<span class="card_year"
                 >00</span
               >
             </p>
           </div>
         </div>
-        <div class="card-back"><p class="card-cvc">000</p></div>
+        <div class="card-back"><p class="card_cvc">000</p></div>
       </section>
       <section class="inputs-section">
         <form class="display">
@@ -41,26 +41,26 @@
               <label for="card-name"> Cardholder Name</label>
               <input
                 type="text"
-                id="card-name"
+                id="card_name"
                 placeholder="e.g. Jane Appleseed"
                 value=""
                 required
                 onkeydown="handleKeyDown(event)"
               />
-              <span class="error-message card-name"> Can&#96;t be blank</span>
+              <span class="error-message card_name"> Can&#96;t be blank</span>
             </div>
             <div class="input-container">
-              <label for="card-number">Card Number</label>
+              <label for="card_number">Card Number</label>
               <input
                 type="text"
-                id="card-number"
+                id="card_number"
                 placeholder="e.g. 1234 5678 9123 0000"
                 maxlength="16"
                 value=""
                 required
                 onkeydown="handleKeyDown(event)"
               />
-              <span class="error-message card-number">Can&#96;t be blank</span>
+              <span class="error-message card_number">Can&#96;t be blank</span>
             </div>
           </div>
           <div class="date-inputs-container">
@@ -69,7 +69,7 @@
               <div class="date-inputs">
                 <input
                   type="text"
-                  id="card-month"
+                  id="card_month"
                   placeholder="MM"
                   maxlength="2"
                   value=""
@@ -78,7 +78,7 @@
                 />
                 <input
                   type="text"
-                  id="card-year"
+                  id="card_year"
                   placeholder="YY"
                   maxlength="2"
                   value=""
@@ -87,24 +87,24 @@
                 />
               </div>
               <div>
-                <span class="error-message card-month">
+                <span class="error-message card_month">
                   Can&#96;t be blank</span
                 >
-                <span class="error-message card-year"> Can&#96;t be blank</span>
+                <span class="error-message card_year"> Can&#96;t be blank</span>
               </div>
             </div>
             <div>
-              <label for="card-cvc">CVC </label>
+              <label for="card_cvc">CVC </label>
               <input
                 type="text"
                 placeholder="e.g. 123 Confirm"
-                id="card-cvc"
+                id="card_cvc"
                 maxlength="3"
                 value=""
                 required
                 onkeydown="handleKeyDown(event)"
               />
-              <span class="error-message card-cvc"> Can&#96;t be blank</span>
+              <span class="error-message card_cvc"> Can&#96;t be blank</span>
             </div>
           </div>
           <button class="btn" onclick="handleButton(event)">Confirm</button>
