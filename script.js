@@ -53,6 +53,14 @@ const checkInputs = data => {
           isValid = false;
           return;
         }
+      } else if (data[index].name === 'card_cvc') {
+        if (data[index].value.length < 3) {
+          e.innerHTML = 'please insert a valid cvc';
+          e.classList.add('display');
+          inputs[index].classList.add('error-input');
+          isValid = false;
+          return;
+        }
       }
     }
 
