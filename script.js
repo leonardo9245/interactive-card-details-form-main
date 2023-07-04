@@ -31,7 +31,15 @@ const checkInputs = data => {
       e.classList.remove('display');
       inputs[index].classList.remove('error-input');
 
-      if (data[index].name === 'card_year') {
+      if (data[index].name === 'card_number') {
+        if (data[index].value.length < 16) {
+          e.innerHTML = 'please insert a card number';
+          e.classList.add('display');
+          inputs[index].classList.add('error-input');
+          isValid = false;
+          return;
+        }
+      } else if (data[index].name === 'card_year') {
         if (
           parseInt(data[index].value) < yearInt ||
           parseInt(data[index].value) > yearInt + 10
